@@ -1,10 +1,97 @@
 ﻿@page
 @model IndexModel
 @{
-    ViewData["Title"] = "Home page";
+    ViewData["Title"] = "Book Store Testing";
 }
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>@ViewData["Title"]</title>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" />
+    <link href="~/css/index.css" rel="stylesheet" />
+    <!-- jQuery (only one reference!) -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- Our custom JS (defer to ensure jQuery loads first) -->
+    <script src="~/js/index.js" type="text/javascript" defer></script>
+</head>
+<body>
+<div class="container mt-4">
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <h2>Book Store Test</h2>
+
+    <!-- Controls Row -->
+    <div class="row mb-3">
+        <div class="col-md-3">
+            <label for="language" class="form-label">Language</label>
+            <select id="language" class="form-select">
+                <option value="en" selected>English (US)</option>
+                <option value="de">German (DE)</option>
+                <option value="fr">French (FR)</option>
+            </select>
+        </div>
+        <div class="col-md-3">
+            <label for="seed" class="form-label">Seed</label>
+            <div class="input-group">
+                <input id="seed" type="number" class="form-control" value="12345" />
+                <button id="randomSeedBtn" class="btn btn-outline-secondary" type="button">
+                    <i class="fas fa-random"></i> <!-- Font Awesome icon -->
+                </button>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <label for="likes" class="form-label">Likes</label>
+            <input id="likes" type="range" class="form-range" min="0" max="10" step="0.1" value="5" />
+            <span id="likesValue">5.0</span>
+        </div>
+        <div class="col-md-3">
+            <label for="reviews" class="form-label">Reviews</label>
+            <input id="reviews" type="number" class="form-control" step="0.1" value="4.7" />
+        </div>
+    </div>
+
+    <!-- Toggle Buttons for Table / Gallery -->
+    <div class="mb-3 text-end">
+        <div class="btn-group" role="group">
+            <button id="tableViewBtn" type="button" class="btn btn-secondary active">
+                <i class="fas fa-table"></i> Table
+            </button>
+            <button id="galleryViewBtn" type="button" class="btn btn-secondary">
+                <i class="fas fa-th-large"></i> Gallery
+            </button>
+        </div>
+    </div>
+
+    <!-- Table View -->
+    <div id="tableView">
+        <table class="table table-striped" id="booksTable">
+            <thead>
+            <tr>
+                <th>#</th>
+                <th>ISBN</th>
+                <th>Title</th>
+                <th>Author(s)</th>
+                <th>Publisher</th>
+                <th>Likes</th>
+                <th>Details</th>
+            </tr>
+            </thead>
+            <tbody id="booksTableBody">
+            <!-- Populated by JavaScript -->
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Gallery View -->
+    <div id="galleryView" class="row d-none">
+        <!-- Populated by JavaScript -->
+    </div>
 </div>
+
+<!-- Bootstrap Bundle JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
